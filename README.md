@@ -11,12 +11,12 @@ To have model data be dispayed in a form, which can be validated.
 		name: 'Fred'
 	}),
 	form: validationProxy('model', {
-	  presence: true
+	    presence: true
 	})
 	
 ##### Example
 
-See the [IndexController](app/controllers/index.js) for an example.
+See the [IndexController](app/controllers/index.js) and [template](app/templates/index.hbs) for an example.
 
 ##### Overview
 

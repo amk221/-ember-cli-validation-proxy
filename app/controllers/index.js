@@ -3,7 +3,7 @@ import Ember from 'ember';
 import BufferedMixin from 'ember-buffered-proxy/mixin';
 import EmberValidations from 'ember-validations';
 
-var validatableProxy = function(key, validations) {
+var validationProxy = function(key, validations) {
   return Ember.computed(function() {
     return Ember.ObjectProxy.createWithMixins(
       BufferedMixin,
@@ -22,7 +22,7 @@ export default Ember.Controller.extend({
 
   myModel: null,
 
-  form: validatableProxy('myModel', {
+  form: validationProxy('myModel', {
     name: {
       presence: true
     }
