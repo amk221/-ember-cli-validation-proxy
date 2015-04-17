@@ -32,3 +32,6 @@ Notice in the screenshot bind-attr is displaying an error but htmlbars is not:
 
 <img src="screenshot.png" width="293" height="100">
 
+##### Instructions for demo
+
+`ember serve`
