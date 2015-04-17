@@ -1,0 +1,25 @@
+htmlbars
+
+<span class="{{if form.errors.name 'error-field'}}">
+  {{input value=form.name}}
+</span>
+
+{{#if form.errors.name}}
+  <span class="error-text">{{form.errors.name}}</span>
+{{/if}}
+
+<br>
+
+bind-attr
+
+<span {{bind-attr class="form.errors.name:error-field"}}>
+  {{input value=form.name}}
+</span>
+
+{{#if form.errors.name}}
+  <span class="error-text">{{form.errors.name}}</span>
+{{/if}}
+
+<br><br>
+
+<button {{action 'validate'}}>Submit form</button>

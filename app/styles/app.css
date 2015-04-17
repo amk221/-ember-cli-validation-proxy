@@ -1,0 +1,8 @@
+.error-field {
+  display: inline-block;
+  border: 1px solid red;
+}
+
+.error-text {
+  color: red;
+}
