@@ -35,3 +35,7 @@ Notice in the screenshot bind-attr is displaying an error but htmlbars is not:
 ##### Instructions for demo
 
 `ember serve`
+
+##### Context
+
+[irc-discussion.txt](irc-discussion.txt)

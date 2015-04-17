@@ -1,0 +1,57 @@
+     amk221 | has anybody got 5 minutes to help me with a weird inconsistancy I
+            | found with bind-attr vs the new htmlbars if. I don't know if its a
+            | bug or not
+     amk221 | https://github.com/amk221/ember-cli-validation-proxy
+alexspeller | amk221: I know that the htmlbars syntax works
+     amk221 | alexspeller: yes. same. I know too, I've tested it in a fiddle.
+            | http://jsfiddle.net/amk221/6abmn5zb/1/
+     amk221 | was just asking for help on that demo. thats all
+alexspeller | amk221: it's weird
+     amk221 | its most definitly something stupid I'm doing (always the case!)
+            | but I duno what
+      locks | amk221: what makes you think that if will work?
+     amk221 | locks: what do you mean?
+     amk221 | have i missed something obvious?
+      locks | amk221: class="thing {{if thing.isOn 'on' 'off'}}"
+      locks | I mean where have you seen that syntax
+     amk221 | hmm, I can't remember. I didn't pull it out of thin air. I will
+            | try to find where I got it from.
+     amk221 | http://emberjs.com/blog/2015/03/27/ember-1-11-0-released.html#toc_inline-if
+alexspeller | amk221: locks: the syntaxs works for me
+alexspeller | locks: amk221: https://jsfiddle.net/w3sj0mkt/31/
+alexspeller | amk221: btw I like this design, looks like it'd make a nice addon
+alexspeller | amk221: people seem to ask about this a lot
+      locks | amk221: and you're sure you're on 1.11 right
+      locks | amk221: your demo works for me fwiw
+     amk221 | locks: ah. the fiddle does yes. But this doesn't
+            | https://github.com/amk221/ember-cli-validation-proxy
+      locks | Ah
+     amk221 | I think the issue is not related to templating, but rather
+            | somewhere between BufferedProxy and EmberValidations.
+alexspeller | amk221: you're right there
+alexspeller | amk221: this works fine:
+            | https://gist.github.com/alexspeller/5253176a97b22024d2c2
+     amk221 | hmm
+alexspeller | amk221: also, making a new property in the controller like this
+            | and using that in the if *does* work:   nameErrorBinding:
+            | 'form.errors.name',
+alexspeller | amk221: but using nameError: Em.computed.alias('form.errors.name')
+            | in the controller and using that in the if *doesn't* work
+     amk221 | interesting thanks for your help
+alexspeller | amk221: I have no idea how to track it down further. The bug could
+            | be in ember validations, the buffered proxy, or ember itself
+     amk221 | stumped :)
+     amk221 | I need to figure it out before bind-attr goes away
+     amk221 | whats weird is, if i put {{log form.errors.name}} in the template,
+            | it works
+      locks | amk221: open an issue
+      locks | Include the smallest repro you can and this discussion
+     amk221 | locks: I would, but I'm not sure where haha!
+alexspeller | amk221: I would suggest ember
+      locks | ^
+     amk221 | rightyho, thank you
+     amk221 | cheers for looking
+alexspeller | amk221: because even if there is a bug somewhere else, the
+            | behaviour of that if syntax should be the same as the bind-attr
+
+
