@@ -30,5 +30,5 @@ This works fine, apart from an inconsistancy I noticed with htmlbars not adding 
 
 Notice in the screenshot bind-attr is displaying an error but htmlbars is not:
 
-![](./screenshot.png =293x100)
+<img src="screenshot.png" width="293" height="100">
 
