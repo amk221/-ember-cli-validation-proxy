@@ -1,53 +1,34 @@
-# Example
+# Ember ValidationProxy object
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+##### The intention
 
-## Prerequisites
+To have model data be dispayed in a form, which can be validated.
 
-You will need the following things properly installed on your computer.
+##### Usage
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://www.ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
 
-## Installation
+	model: Ember.Object.create({
+		name: 'Fred'
+	}),
+	form: validationProxy('model', {
+	  presence: true
+	})
+	
+##### Example
 
-* `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install`
-* `bower install`
+See the [IndexController](app/controllers/index.js) for an example.
 
-## Running / Development
+##### Overview
 
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+1. `form` is bound to the inputs, leaving `model` alone.
+2. The user can populate alter the `form` data, leaving `model` alone.
+3. The user submits the `form`
+4. The `form` is validated
+5. If validation is successful, the changes are transfered to the `model` itself.
 
-### Code Generators
+This works fine, apart from an inconsistancy I noticed with htmlbars not adding a classname to the input when in an error state.
 
-Make use of the many generators for code, try `ember help generate` for more details
+Notice in the screenshot bind-attr is displaying an error but htmlbars is not:
 
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://www.ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+![](./screenshot.png =293x100)
 
